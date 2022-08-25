@@ -1,0 +1,52 @@
+﻿@model Insurer
+@{
+    ViewBag.Title = "ERP System | Grinweiv Alliance";
+    ViewBag.BodyClass = "INSURERS";
+}
+<div class="commonPage">
+    <h1>View Insurer</h1>
+
+    <form>
+        <div class="detailPage">
+            <div class="container">
+                <div class="formFields">
+                    <div class="formCol4">
+                        <span class="fieldName"><strong>Insurer Name *</strong></span>
+                        <span class="field">@Model.Name</span>
+                    </div>
+                    <div class="formCol4">
+                        <span class="fieldName"><strong>Internal Code *</strong></span>
+                        <span class="field">@Model.InternalCode</span>
+                    </div>
+                    <div class="formCol4">
+                        <span class="fieldName"><strong>Description</strong></span>
+                        <span class="field">@Model.Desc</span>
+                    </div>
+                    <div class="formCol4">
+                        <span class="fieldName"><strong>Status *</strong></span>
+                        <span class="field"><div class="status @(Model.IsActive == true ? "active":"inactive")">@(Model.IsActive == true ? "Active":"Inactive")</div></span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="formCol2">
+                        <span class="fieldName"><strong>Remarks</strong></span>
+                        <span class="field">@Model.Remarks</span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        @*@if (AccessHelper.IsManageInsurersAccessible(UserAccessType.View))
+        {*@
+            <input type="button" class="backBtn" value="Cancel" onclick="location.href = '@ViewHelper.ApplicationPath/Insurers';">
+        @*}
+        @if (AccessHelper.IsManageInsurersAccessible(UserAccessType.Edit))
+        {*@
+            <input type="button" class="submitBtn edit" value="Edit" onclick="location.href = '@ViewHelper.ApplicationPath/Insurers/Edit/@Model.Id';">
+        @*}*@
+    </form>
+</div>
+
+
+
+
+

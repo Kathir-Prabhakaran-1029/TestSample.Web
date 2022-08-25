@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample</title>
+    <link href="~/Content/css/common.css" rel="stylesheet" />
+    <link href="~/Content/css/component.css" rel="stylesheet" />
+    <link href="~/Content/css/layout.css" rel="stylesheet" />
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/Scripts/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <div class="page-wrapper chiller-theme toggled">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                @*<div class="sidebar-account">
+                        @{Html.RenderAction("Details", "Login");}
+                        <a href="javascript:void();" class="editAcct"><img src="@ApplicationInstance.Application["ApplicationPath"]/content/images/edit-icon.svg" title="Edit Profile"></a>
+                    </div>*@
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="iconAgents dd">
+                            <a href="javascript:void(0);" class="mainMenu" rel="relAgents">Insurer</a>
+                            <div class="subMenu" id="relAgents">
+                                <ul>
+                                    <li><a href="@ApplicationInstance.Application["ApplicationPath"]/Insurers/Add">Create New Insurer</a></li>
+                                    <li><a href="@ApplicationInstance.Application["ApplicationPath"]/Insurers">Manage Insurer</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        @*<li class="iconAgents dd">
+                                <a href="javascript:void(0);" class="mainMenu" rel="relAgents">Customers</a>
+                                <div class="subMenu" id="relAgents">
+                                    <ul>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/Customer/Create">Create New Customer</a></li>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/Customer">Manage Customers</a></li>
+                                    </ul>
+                                </div>
+                            </li>*@
+                        @*<li class="iconInsurers dd">
+                                <a href="javascript:void(0);" class="mainMenu" rel="relInsurers">Employees</a>
+                                <div class="subMenu" id="relInsurers">
+                                    <ul>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/Employee/Create">Create New Employee</a></li>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/Employee">Manage Employees</a></li>
+                                    </ul>
+                                </div>
+                            </li>*@
+                        @*<li class="iconProducts dd">
+                                <a href="javascript:void(0);" class="mainMenu" rel="relCMS_OurService">CMS_OurService</a>
+                                <div class="subMenu" id="relCMS_OurService">
+                                    <ul>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/CMS_OurService">Manage CMS_OurServices</a></li>
+                                    </ul>
+                                </div>
+                            </li>*@
+                        @*<li class="iconProducts dd">
+                                <a href="javascript:void(0);" class="mainMenu" rel="relCMS_CustomerReviews">CMS_CustomerReviews</a>
+                                <div class="subMenu" id="relCMS_CustomerReviews">
+                                    <ul>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/CMS_CustomerReviews">Manage CMS_CustomerReviews</a></li>
+                                    </ul>
+                                </div>
+                            </li>*@
+                        @*<li class="iconProducts dd">
+                                <a href="javascript:void(0);" class="mainMenu" rel="relCMS_OurService_Gallery">CMS_OurService_Gallery</a>
+                                <div class="subMenu" id="relCMS_OurService_Gallery">
+                                    <ul>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/CMS_OurService_Gallery">Manage CMS_OurService Gallery</a></li>
+                                    </ul>
+                                </div>
+                            </li>*@
+                        @*<li class="iconProducts dd">
+                                <a href="javascript:void(0);" class="mainMenu" rel="relDealerAssessment">DealerAssessment</a>
+                                <div class="subMenu" id="relDealerAssessment">
+                                    <ul>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/DealerAssessment/Edit">Update DealerAssessment</a></li>
+                                        <li><a href="@ApplicationInstance.Application["ApplicationPath"]/DealerAssessment">Manage DealerAssessment</a></li>
+                                    </ul>
+                                </div>
+                            </li>*@
+                    </ul>
+                    <div class="padding20"></div>
+                </div>
+            </div><!-- sidebar-content  -->
+        </nav>
+        <!-- sidebar-wrapper  -->
+        <main class="page-content">
+            <div class="header">
+                <div class="companyLogo">
+                    <span class="mainMenuBtn"><img src="@ApplicationInstance.Application["ApplicationPath"]/Content/images/main-menu-icon.svg" id="close-sidebar"><img src="@ApplicationInstance.Application["ApplicationPath"]/content/images/main-menu-icon.svg" id="show-sidebar"></span>
+                    @*<span class="logoImg"><img src="@ApplicationInstance.Application["ApplicationPath"]/content/images/company-logo.jpg" alt="Grinweiv Alliance"></span>*@
+                </div>
+                @*<div class="userLogout"><a href="@ApplicationInstance.Application["ApplicationPath"]/Logout">Logout</a></div>*@
+            </div>
+            @RenderBody()
+            @*<div class="footer">Copyright © @DateTime.Now.Year Grinweiv Alliance Pte Ltd. All Rights Reserved.</div>*@
+        </main>
+        <!-- page-content" -->
+    </div>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Customer", "Index", "Customer")</li>
+                        <li>@Html.ActionLink("Employee", "Index", "Employee")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+    @*<div class="container body-content">
+        @RenderBody()*@
+    @*<hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    @*</div>*@
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    <script>
+        var apppath = '@TestSample.Web.Helpers.ViewHelper.ApplicationPath';
+    </script>
+
+    <script src="~/Content/Scripts/jquery/jquery-3.4.1.js"></script>
+    <script src="~/Content/Scripts/jquery/jquery-ui-1.12.0.js"></script>
+    <script src="~/Content/Scripts/jqueryValidate/Validate.js"></script>
+    <script src="~/Content/Scripts/jqueryValidate/jquery.validate.js"></script>
+    <script src="~/Content/Scripts/jqueryValidate/additional-methods.js"></script>
+    <script src="~/Content/Scripts/jqueryValidate/jquery.validate.additional-methods.js"></script>
+    <script src="~/Content/Scripts/jqueryValidate/jquery.alphanum.js"></script>
+    <script src="~/Content/Scripts/jqueryPagination/simplePagination.js"></script>
+    <script src="~/Content/Scripts/common.js"></script>
+    <script src="~/Content/Scripts/popper.js"></script>
+    <script src="~/Content/Scripts/bootstrap/bootstrap.js"></script>
+    <script src="~/Content/Scripts/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/Scripts/daterangepicker/daterangepicker.min.js"></script>
+
+    @*<script src="~/Content/Scripts/jqueryValidate/jquery.validate.unobtrusive.js"></script>*@
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("Popup", required: false)
+</body>
+</html>

@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+/** Progressbar class css*/
+.progressbar{width:100% !important;margin-top:10px;margin-bottom:10px;position:relative;background-color:#f1f1f1;/*box-shadow:inset 0px 1px 1px rgba(0,0,0,.1);*/display:inline-block;vertical-align:middle;}
+.proggress{height:8px;width:10px;background-color:#3498db;}
+/*
+.percentCount{clear: both;font-family: 'Open Sans', sans-serif;font-size:12px;line-height:12px;color:#ffffff;display:inline-block;vertical-align:middle;	width:22.5%;text-align:right;cursor:pointer;padding-left:2.5%;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;    -moz-user-select: none;-ms-user-select: none;user-select: none;}
+.percentCount:before{content:"";background:url(../../images/arrow-up.png) left center no-repeat;padding-left:15px;}
+.percentCount.decrease:before{content:"";background:url(../../images/arrow-down.png) left center no-repeat;	padding-left:15px;}
+*/

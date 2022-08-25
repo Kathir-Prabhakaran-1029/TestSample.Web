@@ -1,0 +1,129 @@
+﻿@model List<Insurer>
+@{
+    ViewBag.Title = "";
+    ViewBag.BodyClass = "INSURERS";
+}
+<div class="commonPage">
+    <h1>Manage Insurers</h1>
+    <div class="searchFilter">
+        @using (Html.BeginForm("Index", "Insurers", FormMethod.Post, new { id = "InsurerSearch_Form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("PageNum", (object)ViewBag.PageNum)
+            <span><input type="text" name="Search" placeholder="Search by keyword..." value="@ViewBag.Search"></span>
+            <span class="selectField">
+                <select name="IsActive" id="IsActive">
+                    <option disabled selected>Select status</option>
+                    <option value="true" @(ViewBag?.IsActive == true ? "selected" : null)>Active</option>
+                    <option value="false" @(ViewBag?.IsActive == false ? "selected" : null)>Inactive</option>
+                </select>
+            </span>
+            <span class="btn">
+                <input type="button" class="searchBtn" value="Search" id="Search_Btn">
+            </span>
+            //if (AccessHelper.IsManageInsurersAccessible(UserAccessType.Add))
+            //{
+            <span class="btn">
+                <input type="button" class="commonBtn" value="Create New Insurer" onclick="location.href = '@ViewHelper.ApplicationPath/Insurers/Add';">
+            </span>
+            @*  *@}
+        @*<span class="btn">
+                <input type="button" class="commonBtn" value="Export CSV">
+            </span>*@
+        }
+    </div>
+
+    <div class="padding5"></div>
+
+    <div class="responsiveTable">
+        <div class="container">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th style="width:40px;">S/No.</th>
+                        <th>Insurer Name</th>
+                        <th>Internal Code</th>
+                        <th>Description</th>
+                        <th>Date Created</th>
+                        <th style="width:100px;">Status</th>
+                        <th style="width:50px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model?.Count() > 0)
+                    {
+                        int sNo = ViewHelper.GetSNoStart(ViewBag.PageNum, ViewHelper.PageSize);
+
+                        foreach (var I in Model)
+                        {
+                            <tr>
+                                <td data-label="S/No.">@sNo</td>
+                                <td data-label="Insurer Name"><span><a href="@ViewHelper.ApplicationPath/Insurers/Details/@I.Id">@I.Name</a></span></td>
+                                <td data-label="Internal Code">@I.InternalCode</td>
+                                <td data-label="Description">@I.Desc</td>
+                                <td data-label="Date Created"><span>@I.CreatedOn.ShowNonEmptyValue(" hh:mm tt")</span></td>
+                                <td data-label="Status"><div class="status @(I.IsActive?"active":"inactive")">@(I.IsActive?"Active":"Inactive")</div></td>
+                                <td data-label="Actions">
+                                    @*@if (AccessHelper.IsManageInsurersAccessible(UserAccessType.Edit))
+                                {*@
+                                    <a href="@ViewHelper.ApplicationPath/Insurers/Edit/@I.Id"><img src="@ViewHelper.ApplicationPath/content/images/edit-icon.svg"></a>
+                                    <a href="javascript:void(0);" class="delete-Btn" data-id="@I.Id"><img src="@ViewHelper.ApplicationPath/content/images/del-icon.svg"></a>
+                                    @*}*@
+                                </td>
+                            </tr>
+
+                            sNo++;
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="9" style="text-align:center">No Insurers Found.</td></tr>
+                    }
+                </tbody>
+            </table>
+            @if (Model?.Count() > 0)
+            {
+                <div class="pagination">
+                    <div class="page">Showing @ViewHelper.GetSNoStart(ViewBag.PageNum, ViewHelper.PageSize) -  @ViewHelper.GetSNoEnd(ViewBag.PageNum, ViewHelper.PageSize, Model.Count()) of @Model[0].TotalCount entries</div>
+                    <div class="pageNum" data-pageindex="1" data-pagesize="@ViewHelper.PageSize" data-totalitems="@(((Model != null && Model.Count() > 0) ? Model[0].TotalCount : 0))"></div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Popup
+{
+    <!-- Popup (Delete) -->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <a href="javascript:void(0)" data-dismiss="modal" aria-hidden="true" onClick="popup_close()" class="closePopUpBtn"><img src="@ViewHelper.ApplicationPath/content/images/close-icon.svg"></a>
+                        <h1>Delete Data</h1>
+                    </div>
+                    <div class="container">
+                        @using (Html.BeginForm("Delete", "Insurers", FormMethod.Post, new { id = "InsurerDelete_Form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("Id")
+                            <p class="center">Are you sure you want to delete this data?</p>
+                            <div class="padding10"></div>
+                            <div class="groupBtn">
+                                <span class="col"><a href="javascript:void(0);" class="loginBtn" id="Delete_Btn">Yes</a></span>
+                                <span class="col"><a href="javascript:void(0)" data-dismiss="modal" aria-hidden="true" onClick="popup_close()" class="cancelBtn">No</a></span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script src="~/Content/Scripts/Page/insurers-index.js"></script>
+}
+
+
+
